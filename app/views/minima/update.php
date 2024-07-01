@@ -108,20 +108,15 @@ body {
     <div class="form">
         <form class="register-form" method="post">
             <input type="text" name="username" placeholder="username" value="<?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : '' ?>" />
-            <input type="password" name="password" placeholder="password" />
+            <input type="password" name="current_password" placeholder="current password" />
+            <input type="password" name="new_password" placeholder="new password" />
             <input type="text" name="email" placeholder="email address" value="<?= isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : '' ?>" />
             <input type="text" name="phone" placeholder="phone number" value="<?= isset($_SESSION['phone']) ? htmlspecialchars($_SESSION['phone']) : '' ?>" />
-            <button>create</button>
-            <p class="message">Already registered? <a href="#">Sign In</a></p>
-        </form>
-        <form class="login-form" method="post">
-            <input type="text" name="username" placeholder="username" value="<?= isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : '' ?>" />
-            <input type="password" name="password" placeholder="password" />
-            <button>login</button>
-            <p class="message">Not registered? <a href="#">Create an account</a></p>
-        </form>
+            <button>update</button>
+            
     </div>
 </div>
+
 
 <script>
 $('.message a').click(function(){

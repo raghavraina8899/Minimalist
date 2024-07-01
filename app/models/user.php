@@ -2,6 +2,59 @@
 
 class User 
 {
+    private $db;
+
+    public function update($username, $current_password, $email, $phone, $new_password)
+    {
+        $DB = new Database();
+        $_SESSION['error'] = "";
+
+        // Validate inputs as needed
+
+        // Example validation for username and email
+        if (!$this->validateUsername($username)) {
+            $_SESSION['error'] = "Please enter a valid username.";
+            return;
+        }
+
+        if (!$this->validateEmail($email)) {
+            $_SESSION['error'] = "Please enter a valid email address.";
+            return;
+        }
+
+        // Example validation for password (current and new)
+        if (!$this->validatePassword($current_password)) {
+            $_SESSION['error'] = "Please enter your current password.";
+            return;
+        }
+
+        if (!$this->validatePassword($new_password)) {
+            $_SESSION['error'] = "Please enter a valid new password.";
+            return;
+        }
+
+        // Update user data in the database
+        // Example query
+        $query = "UPDATE users_ SET email = :email, phone = :phone, password = :new_password WHERE username = :username";
+        $params = [
+            'username' => $username,
+            'email' => $email,
+            'phone' => $phone,
+            'new_password' => password_hash($new_password, PASSWORD_DEFAULT) // Hash the new password
+        ];
+
+        $result = $DB->write($query, $params);
+
+        if ($result) {
+            $_SESSION['success'] = "Profile updated successfully.";
+            header("Location: " . ROOT . "update");
+            exit;
+        } else {
+            $_SESSION['error'] = "Failed to update profile. Please try again.";
+            header("Location: " . ROOT . "update");
+            exit;
+        }
+    }
     function login($POST)
     {
         $DB = new Database();

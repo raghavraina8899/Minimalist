@@ -51,6 +51,7 @@
                 <?php else: ?>
                   <li><a href="<?=ROOT?>logout">Logout</a></li>
                   <li><a href="<?=ROOT?>upload">Upload</a></li>
+                  <li><a href="<?=ROOT?>update">Update</a></li>
                 <?php endif; ?>
 
 
