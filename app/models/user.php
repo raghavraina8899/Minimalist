@@ -47,7 +47,7 @@ class User
 
         if ($result) {
             $_SESSION['success'] = "Profile updated successfully.";
-            header("Location: " . ROOT . "update");
+            header("Location: " . ROOT . "home");
             exit;
         } else {
             $_SESSION['error'] = "Failed to update profile. Please try again.";
